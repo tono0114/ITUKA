@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts, except:[:edit]
-  get "posts/:id/delete_confirm", :to => "posts#delete_confirm"
+  get "post/:id/delete_confirm", :to => "posts#delete_confirm", as: 'post_delete_confirm'
 
   resources :post_comments, only:[:create, :destroy]
 
