@@ -1,7 +1,24 @@
 <div class="container">
   <div class="row">
-    <div class="col-12">
-
+    <div class="col-md-12">
+      <h2>Posts</h2>
+    </div>
+    <div class="col-md-12 mt-4" width="100%">
+      <% @posts.each do |post| %>
+      <table class="post-list mr-3 mb-3">
+        <tr>
+          <td>
+            <%= link_to post_path(post.id) do %>
+            <%= image_tag post.image_id.url, size: "250x200" %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>&emsp;<%= post.user.name %><i class="fas fa-heart"></i></td>
+        </tr>
+      </table>
+      <% end %>
+      <%= paginate @posts %>
     </div>
   </div>
 </div>

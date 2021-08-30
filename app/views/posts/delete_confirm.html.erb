@@ -1,7 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-12">
-
+    <div class="col-12 text-center">
+      <h2>本当にこの投稿を削除してよろしいですか？</h2>
+    </div>
+    <div class="col-12 d-flex justify-content-center mt-5">
+      <table>
+        <tr>
+          <td><%= link_to "削除する", post_path(@post.id), method: :delete, class: "btn btn-outline-dark btn-sm mr-4" %></td>
+          <td><%= link_to "戻る", post_path(@post.id), method: :delete, class: "btn btn-outline-dark btn-sm px-4" %></td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
