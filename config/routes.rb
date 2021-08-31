@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get "top", :to => "homes#top"
 
   devise_for :users
-  resources :users
+  resources :users, except: [:create, :new]
+  get "users/:id/unsubscribe", :to => "users#unsubscribe", as: "user_unsubscribe"
 
   devise_scope :user do
     get "signup", :to => "users/registrations#new"
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts, except:[:edit]
-  get "posts/:id/delete_confirm", :to => "posts#delete_confirm"
+  get "posts/:id/delete_confirm", :to => "posts#delete_confirm", as: "post_delete_confirm"
 
   resources :post_comments, only:[:create, :destroy]
 
