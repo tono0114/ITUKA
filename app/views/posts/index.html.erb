@@ -14,7 +14,12 @@
           </td>
         </tr>
         <tr>
-          <td>&emsp;<%= post.user.name %><i class="fas fa-heart"></i></td>
+          <td>&emsp;
+            <%= link_to user_path(post.user.id), class: "text-dark" do %>
+            <%= post.user.name %>
+            <% end %>
+            <i class="fas fa-heart"></i>
+          </td>
         </tr>
       </table>
       <% end %>

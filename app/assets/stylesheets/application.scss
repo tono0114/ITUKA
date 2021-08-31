@@ -20,6 +20,11 @@
  body {
   overflow: scroll;
   height: 100vh;
+  background-color:#ffffdd;
+ }
+
+ .navbar-brand {
+  font-size: 60px;
  }
 
  .fa-heart {
@@ -30,4 +35,20 @@
  .post-list {
   display: inline-block;
   border: thin solid black;
+ }
+
+ .user-image {
+  border: solid 1px white;
+ }
+
+ .user_posts {
+  display: inline-block;
+ }
+
+ .confirm-text {
+  padding: 10px;
+  width: 500px;
+  color: white;
+  font-weight: bold;
+  background-color: #888888;
  }

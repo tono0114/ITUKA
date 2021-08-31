@@ -9,6 +9,6 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :post_comments
 
-  mount_uploader :image_id, ImagesUploader
+  mount_uploader :image_id, UserImageUploader
 
 end
