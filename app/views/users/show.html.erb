@@ -5,20 +5,27 @@
     </div>
     <div class="col-md-5">
       <h4>Profile</h4>
-      <%= image_tag @user.image_id.url, size: "300x320" %>
+      <%= image_tag @user.image_id.url, size: "300x320" %></br>
+      <p></p>
       <%= @user.introduction %>
-      <% if false %>
       <table>
         <tr>
           <td>フォロー</td>
-          <td><%= @user.followed_id.count %></td>
+          <td>
+            <%= link_to followings_path do %>
+            <%= @user.following_user.count %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td>フォロワー</td>
-          <td><%= @user.follower_id.count %></td>
+          <td>
+            <%= link_to followers_path do %>
+            <%= @user.follower_user.count %>
+            <% end %>
+          </td>
         </tr>
       </table>
-      <% end %>
       <div class="col mt-5">
       <%= link_to "ユーザー情報を編集する", edit_user_path(@user.id), class: "btn btn-outline-dark btn-sm" %>
       </div>

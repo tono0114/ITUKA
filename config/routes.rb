@@ -1,26 +1,27 @@
 Rails.application.routes.draw do
 
-  get "top", :to => "homes#top"
+  get "top" => "homes#top"
 
   devise_for :users
   resources :users, except: [:create, :new]
-  get "users/:id/unsubscribe", :to => "users#unsubscribe", as: "user_unsubscribe"
+  get "unsubscribe/:id" => "users#unsubscribe", as: "user_unsubscribe"
 
   devise_scope :user do
-    get "signup", :to => "users/registrations#new"
-    get "login", :to => "users/sessions#new"
-    delete "logout", :to => "users/sessions#destroy"
+    get "signup" => "users/registrations#new"
+    get "login" => "users/sessions#new"
+    delete "logout" => "users/sessions#destroy"
   end
 
+  post 'follow/:id' => 'relationships#follow', as: 'follow'
+  delete 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
+  get "followings/:id", :to => "relationships#followings", as: "followings"
+  get "followers/:id", :to => "relationships#followers", as: "followers"
+
   resources :posts, except:[:edit]
-  get "posts/:id/delete_confirm", :to => "posts#delete_confirm", as: "post_delete_confirm"
+  get "posts/:id/delete_confirm" => "posts#delete_confirm", as: "post_delete_confirm"
 
   resources :post_comments, only:[:create, :destroy]
 
   resources :favorites, only:[:create, :destroy]
-
-  resources :relationships, only:[:create, :destroy]
-  get "followings", :to => "relationships#followings"
-  get "followers", :to => "relationships#followers"
 
 end
