@@ -3,7 +3,8 @@
     <div class="col-md-12">
       <%= form_with model: @user, url: user_path(@user.id), local: true do |f| %>
       <div class="col-md-6">
-        <%= f.file_field :image_id %>
+        <%= f.file_field :image_id, class: "img_field", style: "display:none" %>
+        <%= image_tag @user.image_id.url, onClick: "$('.img_field').click()",class: "img-thumbnail img_prev", size: "400" %>
       </div>
       <div class="col-md-6">
         <div class="field">

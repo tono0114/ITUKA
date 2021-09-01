@@ -7,13 +7,16 @@
     <%= form_with model: @post, url: posts_path, local: true do |f| %>
       <div class="col-md-6 image">
         <div>
+          <% if false %>
           <% if @post.image_id.present? %>
             <%= image_tag @post.image_id, id: :image_prev %>
           <% else %>
             <i class="fas fa-image" id="img_prev"></i>
           <% end %>
+          <% end %>
         </div>
-        <%= f.file_field :image_id, class: "image", id: "file" %>
+        <%= f.file_field :image_id, class: "img_field", style: "display:none" %>
+        <%= image_tag @post.image_id.url, onClick: "$('.img_field').click()",class: "img-thumbnail img_prev", size: "400" %>
       </div>
       <div class="col-md-6">
         <table>

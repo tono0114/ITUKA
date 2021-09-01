@@ -23,6 +23,12 @@
   background-color:#ffffdd;
  }
 
+ .img_prev:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  transform: scale(1.01, 1.01);
+ }
+
  .navbar-brand {
   font-size: 60px;
  }
