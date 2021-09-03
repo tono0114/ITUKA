@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   get "top" => "homes#top"
 
   devise_for :users
-  resources :users, except: [:create, :new]
+  resources :users, except: [:create, :new] do
+    collection do
+      get "search"
+    end
+  end
   get "unsubscribe/:id" => "users#unsubscribe", as: "user_unsubscribe"
 
   devise_scope :user do
@@ -19,6 +23,9 @@ Rails.application.routes.draw do
 
   resources :posts, except:[:edit] do
     resource :favorites, only:[:create, :destroy]
+    collection do
+      get "search"
+    end
   end
   get "delete_confirm/:id" => "posts#delete_confirm", as: "delete_confirm"
 

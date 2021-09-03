@@ -2,7 +2,7 @@
   <div class="row">
     <%= render "layouts/user_search_form" %>
     <div class="col-md-12">
-      <h2>Users</h2>
+      <h5>検索結果 "<%= @keyword %>"</h5>
     </div>
     <%= render "layouts/users", users: @users %>
   </div>

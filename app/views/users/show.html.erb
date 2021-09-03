@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-5">
       <h4>Profile</h4>
-      <%= image_tag @user.image_id.url, size: "300x320" %></br>
+      <%= image_tag @user.image_id.url, width: "70%", class: "img-thumbnail" %></br>
       <p></p>
       <%= @user.introduction %>
       <table>
@@ -26,9 +26,11 @@
           </td>
         </tr>
       </table>
+      <% if @user == current_user %>
       <div class="col mt-5">
       <%= link_to "ユーザー情報を編集する", edit_user_path(@user.id), class: "btn btn-outline-dark btn-sm" %>
       </div>
+      <% end %>
     </div>
     <div class="col-md-7">
       <h4>Post's list</h4>

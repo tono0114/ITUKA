@@ -34,6 +34,15 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def search
+    if params[:keyword].present?
+      @posts = Post.where('title LIKE ?', "%#{params[:keyword]}%").or(Post.where('country LIKE ?', "%#{params[:keyword]}%")).page(params[:page]).per(28)
+      @keyword = params[:keyword]
+    else
+      @posts = Post.all.page(params[:page]).per(28)
+    end
+  end
+
   private
 
   def post_params

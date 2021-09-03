@@ -29,6 +29,15 @@ class UsersController < ApplicationController
     redirect_to top_path
   end
 
+  def search
+    if params[:keyword].present?
+      @users = User.where('name LIKE ?', "%#{params[:keyword]}%").page(params[:page])
+      @keyword = params[:keyword]
+    else
+      @users = User.all.page(params[:page])
+    end
+  end
+
   private
 
   def user_params
