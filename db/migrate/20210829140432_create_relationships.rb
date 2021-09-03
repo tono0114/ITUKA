@@ -6,6 +6,8 @@ class CreateRelationships < ActiveRecord::Migration[5.2]
       t.datetime :updated_at
       t.datetime :created_at
 
+      t.index [:follower_id, :followed_id], unique: true
+
       t.timestamps
     end
   end

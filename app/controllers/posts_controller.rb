@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
 
   def create
     @post = Post.new(post_params)
@@ -18,6 +19,9 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+    @favorite = Favorite.new
+    @post_comments = @post.post_comments
+    @post_comment = PostComment.new
   end
 
   def delete_confirm

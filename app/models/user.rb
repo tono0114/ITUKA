@@ -6,10 +6,10 @@ class User < ApplicationRecord
 
   mount_uploader :image_id, UserImageUploader
 
-  has_many :posts
-  has_many :favorites
+  has_many :posts, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_posts, through: :favorites, source: :post
   has_many :post_comments
-
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following_user, through: :follower, source: :followed
@@ -26,4 +26,9 @@ class User < ApplicationRecord
   def following?(user)
     following_user.include?(user)
   end
+
+  def favorited?(post)
+    favorites.exists?(post_id: post.id)
+  end
+
 end

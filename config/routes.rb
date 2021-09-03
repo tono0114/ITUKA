@@ -17,11 +17,11 @@ Rails.application.routes.draw do
   get "followings/:id", :to => "relationships#followings", as: "followings"
   get "followers/:id", :to => "relationships#followers", as: "followers"
 
-  resources :posts, except:[:edit]
-  get "posts/:id/delete_confirm" => "posts#delete_confirm", as: "post_delete_confirm"
+  resources :posts, except:[:edit] do
+    resource :favorites, only:[:create, :destroy]
+  end
+  get "delete_confirm/:id" => "posts#delete_confirm", as: "delete_confirm"
 
   resources :post_comments, only:[:create, :destroy]
-
-  resources :favorites, only:[:create, :destroy]
 
 end

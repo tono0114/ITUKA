@@ -4,13 +4,15 @@
       <h2>Post detail</h2>
     </div>
     <div class="col-md-6">
-      <%= image_tag @post.image_id.url, size: "500x400" %>
+      <%= image_tag @post.image_id.url, size: "500x400" %></br>
+      <i class="fas fa-comment"></i>&thinsp;&thinsp;<%= @post_comments.count %></br>
+      <%= render "layouts/favorite", post: @post %>
       <% if @user == current_user %>
-      <%= link_to "削除する", post_delete_confirm_path(@post.id), class: "btn btn-secondary btn-sm" %>
+        <%= link_to "削除する", delete_confirm_path(@post.id), class: "btn btn-secondary btn-sm" %>
       <% end %>
     </div>
     <div class="col-md-6">
-      <table>
+      <table class="mb-3">
         <tr>
           <td>Title</td>
           <td><%= @post.title %></td>
@@ -24,7 +26,45 @@
           <td><%= @post.text %></td>
         </tr>
       </table>
-      <h2>Comment</h2>
+      <% if @post_comments.count == 0 %>
+        <h2>No Comment</h2>
+      <% elsif @post_comments.count == 1 %>
+        <h2><span class="comment_count">1 </span>Comment</h2>
+      <% else %>
+        <h2>
+          <span class="comment_count">
+            <%= @post_comments.count %>
+          </span>
+        Comments</h2>
+      <% end %>
+
+      <%= form_with model: @post_comment, url: post_comments_path, local: true do |f| %>
+      <%= f.text_area :comment, size: "65px" %>
+      <div class="text-right"><%= f.submit "コメントする", class: "btn btn-success btn-sm" %></div>
+      <% end %>
+      <table width="100%">
+        <% @post_comments.reverse.each do |post_comment| %>
+        <tr>
+          <td class="col-md-9">
+            <%= image_tag post_comment.user.image_id.url, size: "40" %></br>
+            <span class="name_date">
+              <%= post_comment.user.name %>&emsp;
+              <%= time_ago_in_words(post_comment.created_at) %>
+            </span></br>
+            <%= post_comment.comment %>
+            </br>
+            </br>
+          </td>
+          <td class="col-md-3">
+            <% if @post.post_comments == current_user.post_comments %>
+            <div class="text-right">
+            <%= link_to "削除する", post_comment_path(post_comment.id), method: :delete, class: "btn btn-danger btn-sm" %>
+            </div>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
     </div>
   </div>
 </div>

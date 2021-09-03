@@ -15,10 +15,10 @@
         </tr>
         <tr>
           <td>&emsp;
-            <%= link_to user_path(post.user.id), class: "text-dark" do %>
+            <%= link_to user_path(post.user.id), class: "link" do %>
             <%= post.user.name %>
             <% end %>
-            <i class="fas fa-heart"></i>
+            <%= render "layouts/favorite", post: post %>
           </td>
         </tr>
       </table>

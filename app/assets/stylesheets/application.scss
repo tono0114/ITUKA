@@ -33,14 +33,23 @@
   font-size: 60px;
  }
 
- .fa-heart {
-  margin-left: 165px;
+ .red-heart {
   color: red;
+ }
+
+ .grey-heart {
+  color: #bbbbbb;
+ }
+
+ .link {
+  text-decolation: none;
+  color: black;
  }
 
  .post-list {
   display: inline-block;
   border: thin solid black;
+  background-color: white;
  }
 
  .user-image {
@@ -49,6 +58,14 @@
 
  .user_posts {
   display: inline-block;
+ }
+
+ .comment_count {
+  font-size: 45px;
+ }
+
+ .name_date {
+  font-size: 13px;
  }
 
  .confirm-text {

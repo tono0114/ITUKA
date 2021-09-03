@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_29_140432) do
+ActiveRecord::Schema.define(version: 2021_09_02_021430) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "post_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2021_08_29_140432) do
     t.text "text"
     t.datetime "updated_at", null: false
     t.datetime "created_at", null: false
+    t.index ["title", "country"], name: "index_posts_on_title_and_country"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -42,6 +43,7 @@ ActiveRecord::Schema.define(version: 2021_08_29_140432) do
     t.integer "followed_id"
     t.datetime "updated_at", null: false
     t.datetime "created_at", null: false
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,6 +58,7 @@ ActiveRecord::Schema.define(version: 2021_08_29_140432) do
     t.string "image_id"
     t.text "introduction"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
