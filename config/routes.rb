@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get "top" => "homes#top"
+  get "/" => "homes#top"
 
   devise_for :users
   resources :users, except: [:create, :new] do

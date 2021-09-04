@@ -1,9 +1,18 @@
 <div class="container">
   <div class="row">
     <%= render "layouts/post_search_form" %>
-    <div class="col-md-12">
-      <h2>Posts</h2>
-    </div>
+      <div class="col-md-12">
+        <table width="100%">
+          <tr>
+            <td class="col-md-11"><h2>Posts</h2></td>
+            <td class="col-md-1"><p class="new-post">
+              <%= link_to new_post_path do %>
+                <%= image_tag "add-button.png", size: "40", class: "mt-4" %>
+              <% end %>
+            </p></td>
+          </tr>
+        </table>
+      </div>
     <%= render "layouts/posts", posts: @posts %>
   </div>
 </div>

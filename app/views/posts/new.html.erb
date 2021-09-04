@@ -4,38 +4,33 @@
       <h2>New Post</h2>
     </div>
     <div class="col-md-12">
-    <%= form_with model: @post, url: posts_path, local: true do |f| %>
-      <div class="col-md-6 image">
-        <div>
-          <% if false %>
-          <% if @post.image_id.present? %>
-            <%= image_tag @post.image_id, id: :image_prev %>
-          <% else %>
-            <i class="fas fa-image" id="img_prev"></i>
-          <% end %>
-          <% end %>
+      <%= form_with model: @post, url: posts_path, local: true do |f| %>
+        <div class="col-md-6 image">
+          <div class="field">
+            <%= f.file_field :image_id, class: "img_field", style: "display:none" %>
+            <%= image_tag @post.image_id.url, onClick: "$('.img_field').click()",class: "img-thumbnail img_prev", size: "400" %>
+          </div>
         </div>
-        <%= f.file_field :image_id, class: "img_field", style: "display:none" %>
-        <%= image_tag @post.image_id.url, onClick: "$('.img_field').click()",class: "img-thumbnail img_prev", size: "400" %>
-      </div>
-      <div class="col-md-6">
-        <table>
-          <tr>
-            <td><%= f.label :title, "Title" %></td>
-            <td><%= f.text_field :title %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :country, "Country" %></td>
-            <td><%= f.text_field :country %></td>
-          </tr>
-          <tr>
-            <td><%= f.label :text, "Text" %></td>
-            <td><%= f.text_area :text %></td>
-          </tr>
-        </table>
-        <%= f.submit "投稿する", class: "btn btn-success btn-md" %>
-      </div>
-    <% end %>
+        <div class="col-md-6">
+          <table>
+            <tr>
+              <td><%= f.label :title, "Title" %></td>
+              <td><%= f.text_field :title %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :country, "Country" %></td>
+              <td><%= f.text_field :country %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :text, "Text" %></td>
+              <td><%= f.text_area :text %></td>
+            </tr>
+          </table>
+          <div class="actions">
+            <%= f.submit "投稿する", class: "btn btn-success btn-md" %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -1,13 +1,15 @@
-<span id="favorites_buttons">
-  <% if current_user.favorited?(post) %>
+
+
+<span id="favorites_buttons_<%= post.id %>">
+  <% if post.favorited_by?(current_user) %>
     <%= link_to post_favorites_path(post.id, post.favorites.ids), method: :delete, remote: true, class: "link" do %>
-    <i class="fas fa-heart red-heart"></i>
-    <%= post.favorites.count %>
+      <i class="fas fa-heart red-heart"></i>
+      <%= post.favorites.count %>
     <% end %>
   <% else %>
     <%= link_to post_favorites_path(post.id), method: :post, remote: true, class: "link" do %>
-    <i class="fas fa-heart grey-heart"></i>
-    <%= post.favorites.count %>
+      <i class="fas fa-heart grey-heart"></i>
+      <%= post.favorites.count %>
     <% end %>
   <% end %>
 </span>

@@ -1,29 +1,29 @@
 <div class="col-md-12">
   <% users.reverse.each do |user| %>
-  <div class="col-md-6">
-    <table>
-      <tr>
-        <td class="col-md-1">
-          <%= link_to user_path(user.id) do %>
-          <%= image_tag user.image_id.url, class: "user-image", size: "60x50" %>
-          <% end %>
-        </td>
-        <td></td>
-        <td class="col-md-3"><%= user.name %></td>
-        <td></td>
-        <td class="col-md-3">
-          <% unless current_user == user %>
-            <% if current_user.following?(user) %>
-              <%= link_to "Unfollow", unfollow_path(user.id), method: :delete, class: "btn btn-danger btn-sm" %>
-            <% else %>
-              <%= link_to "Follow", follow_path(user.id), method: :post, class: "btn btn-primary btn-sm" %>
+    <div class="col-md-6">
+      <table>
+        <tr>
+          <td class="col-md-1">
+            <%= link_to user_path(user.id) do %>
+            <%= image_tag user.image_id.url, class: "user-image", size: "60x50" %>
             <% end %>
-          <% end %>
-        </td>
-      </tr>
-    </table>
-  </div>
-  <div class="col-md-6"></div>
+          </td>
+          <td></td>
+          <td class="col-md-3"><%= user.name %></td>
+          <td></td>
+          <td class="col-md-3">
+            <% unless current_user == user %>
+              <% if current_user.following?(user) %>
+                <%= link_to "Unfollow", unfollow_path(user.id), method: :delete, class: "btn btn-danger btn-sm" %>
+              <% else %>
+                <%= link_to "Follow", follow_path(user.id), method: :post, class: "btn btn-primary btn-sm px-3" %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-6"></div>
   <% end %>
 </div>
 <div class="col-md-12">

@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
     <%= render "layouts/user_search_form" %>
-    <div class="col-md-12">
-      <h5>検索結果 "<%= @keyword %>"</h5>
-    </div>
+      <div class="col-md-12">
+        <h5>検索結果 "<strong><%= @keyword %></strong>"</h5>
+      </div>
     <%= render "layouts/users", users: @users %>
   </div>
 </div>

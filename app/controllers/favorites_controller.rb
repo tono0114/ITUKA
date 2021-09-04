@@ -6,14 +6,13 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    @favorite = Favorite.find_by(post_id: params[:post_id], user_id: current_user.id)
-    @favorite.destroy
+    @favorite = current_user.favorites.find_by(post_id: params[:post_id]).destroy
   end
 
   private
 
   def set_post
-    @post = Post.find_by(params[:post_id])
+    @post = Post.find(params[:post_id])
   end
 
 end

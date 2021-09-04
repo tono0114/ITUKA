@@ -5,15 +5,15 @@
     </div>
     <div class="col-md-5">
       <h4>Profile</h4>
-      <%= image_tag @user.image_id.url, width: "70%", class: "img-thumbnail" %></br>
-      <p></p>
-      <%= @user.introduction %>
+        <%= image_tag @user.image_id.url, width: "70%", class: "img-thumbnail" %></br>
+          <p></p>
+        <%= @user.introduction %>
       <table>
         <tr>
           <td>フォロー</td>
           <td>
             <%= link_to followings_path do %>
-            <%= @user.following_user.count %>
+              <%= @user.following_user.count %>
             <% end %>
           </td>
         </tr>
@@ -21,27 +21,27 @@
           <td>フォロワー</td>
           <td>
             <%= link_to followers_path do %>
-            <%= @user.follower_user.count %>
+              <%= @user.follower_user.count %>
             <% end %>
           </td>
         </tr>
       </table>
       <% if @user == current_user %>
-      <div class="col mt-5">
-      <%= link_to "ユーザー情報を編集する", edit_user_path(@user.id), class: "btn btn-outline-dark btn-sm" %>
-      </div>
+        <div class="col mt-5">
+          <%= link_to "ユーザー情報を編集する", edit_user_path(@user.id), class: "btn btn-outline-dark btn-sm" %>
+        </div>
       <% end %>
     </div>
     <div class="col-md-7">
       <h4>Post's list</h4>
-      <div class="user_posts">
-        <% @user.posts.each do |post| %>
-          <%= link_to post_path(post.id) do %>
-            <%= image_tag post.image_id.url, class: "mr-2 mb-2", size: "200x150" %>
-          <% end %>
+        <% @user.posts.reverse.each do |post| %>
+          <div class="user_posts">
+            <%= link_to post_path(post.id) do %>
+              <%= image_tag post.image_id.url, size: "200x160" %>
+            <% end %>
+          </div>
         <% end %>
       <%= paginate @posts %>
-      </div>
     </div>
   </div>
 </div>

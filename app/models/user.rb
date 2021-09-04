@@ -27,8 +27,4 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 
-  def favorited?(post)
-    favorites.exists?(post_id: post.id)
-  end
-
 end
