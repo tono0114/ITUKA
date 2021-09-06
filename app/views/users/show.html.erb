@@ -1,34 +1,40 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <h2><%= @user.name %>'s Page</h2>
-    </div>
     <div class="col-md-5">
       <h4>Profile</h4>
-        <%= image_tag @user.image_id.url, width: "70%", class: "img-thumbnail" %></br>
-          <p></p>
-        <%= @user.introduction %>
-      <table>
-        <tr>
-          <td>フォロー</td>
-          <td>
-            <%= link_to followings_path do %>
+      <%= image_tag @user.image_id.url, width: "70%", class: "img-thumbnail" %></br>
+      <p></p>
+      <table width="90%">
+        <tr class="profile">
+          <td class="col-md-5 col-sm-5">ニックネーム</td>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr class="profile">
+          <td class="col-md-5 col-sm-5">自己紹介</td>
+          <td><%= @user.introduction %></td>
+        </tr>
+        <tr class="profile">
+          <td class="col-md-5 col-sm-5">フォロー</td>
+          <td class="follow-border">
+            <%= link_to followings_path, class: "link" do %>
               <%= @user.following_user.count %>
             <% end %>
+            人
           </td>
         </tr>
-        <tr>
-          <td>フォロワー</td>
-          <td>
-            <%= link_to followers_path do %>
+        <tr class="profile">
+          <td class="col-md-5 col-sm-5">フォロワー</td>
+          <td class="follow-border">
+            <%= link_to followers_path, class: "link" do %>
               <%= @user.follower_user.count %>
             <% end %>
+            人
           </td>
         </tr>
       </table>
       <% if @user == current_user %>
-        <div class="col mt-5">
-          <%= link_to "ユーザー情報を編集する", edit_user_path(@user.id), class: "btn btn-outline-dark btn-sm" %>
+        <div class="text-right mr-5 pr-2 mt-3">
+          <%= link_to "編集する", edit_user_path(@user.id), class: "btn btn-primary btn-sm px-3" %>
         </div>
       <% end %>
     </div>

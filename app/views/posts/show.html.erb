@@ -1,35 +1,41 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 mb-3">
       <h2>Post detail</h2>
     </div>
     <div class="col-md-6">
       <%= image_tag @post.image_id.url, size: "500x400" %></br>
       <i class="fas fa-comment"></i>&thinsp;<%= @post_comments.count %></br>
       <%= render "layouts/favorite", post: @post %>
-      <% if @user == current_user %>
-        <%= link_to "削除する", delete_confirm_path(@post.id), class: "btn btn-secondary btn-sm" %>
-      <% end %>
     </div>
     <div class="col-md-6">
       <table class="mb-3">
         <tr>
-          <th>User</th>
-          <td><%= @user.name %></td>
+          <th><span class="table-head">User</span></th>
+          <td class="col-md-1 col-sm-1"></td>
+          <td><span class="table-data"><%= @user.name %></span></td>
         </tr>
         <tr>
-          <th>Title</th>
-          <td><%= @post.title %></td>
+          <th><span class="table-head">Title</span></th>
+          <td></td>
+          <td><span class="table-data"><%= @post.title %></span></td>
         </tr>
         <tr>
-          <th>Country</th>
-          <td><%= @post.country %></td>
+          <th><span class="table-head">Country</span></th>
+          <td></td>
+          <td><span class="table-data"><%= @post.country %></span></td>
         </tr>
         <tr>
-          <th>Text</th>
-          <td><%= @post.text %></td>
+          <th><span class="table-head">Text</span></th>
+          <td></td>
+          <td><span class="table-data"><%= @post.text %></span></td>
         </tr>
       </table>
+      <% if @user == current_user %>
+        <div class="text-right">
+          <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-primary btn-sm px-3" %>
+        </div>
+      <% end %>
       <% if @post_comments.count == 0 %>
         <h2>No Comment</h2>
       <% elsif @post_comments.count == 1 %>
@@ -38,19 +44,24 @@
         <h2>
           <span class="comment_count">
             <%= @post_comments.count %>
-          </span>
-        　Comments
+          </span>Comments
         </h2>
       <% end %>
-      <%= form_with model: @post_comment, url: post_comments_path, local: true do |f| %>
-        <%= f.text_area :comment, size: "65px" %>
-        <div class="text-right"><%= f.submit "コメントする", class: "btn btn-success btn-sm" %></div>
+      <%= form_with model: @post_comment, url: post_post_comments_path(@post.id), local: true do |f| %>
+        <div class="field">
+          <%= f.text_area :comment, size: "53px", class: "text-form", size: "58x4" %>
+        </div>
+        <div class="actions text-right">
+          <%= f.submit "コメントする", class: "btn btn-success btn-sm" %>
+        </div>
       <% end %>
       <table width="100%">
         <% @post_comments.reverse.each do |post_comment| %>
           <tr>
             <td class="col-md-9">
-              <%= image_tag post_comment.user.image_id.url, size: "40" %></br>
+              <%= link_to user_path(post_comment.user.id) do %>
+                <%= image_tag post_comment.user.image_id.url, size: "40" %></br>
+              <% end %>
               <span class="name_date">
                 <%= post_comment.user.name %>&emsp;
                 <%= time_ago_in_words(post_comment.created_at) %>
@@ -60,11 +71,11 @@
               </br>
             </td>
             <td class="col-md-3">
-              <% if @post.post_comments == current_user.post_comments %>
-                <div class="text-right">
-                  <%= link_to "削除する", post_comment_path(post_comment.id), method: :delete, class: "btn btn-danger btn-sm" %>
-                </div>
-              <% end %>
+              <div class="text-right">
+                <% if post_comment.user == current_user %>
+                  <%= link_to "削除する", post_post_comment_path(post_comment.id, post_comment.post.id), method: :delete, class: "btn btn-danger btn-sm" %>
+                <% end %>
+              </div>
             </td>
           </tr>
         <% end %>

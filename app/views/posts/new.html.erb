@@ -1,36 +1,37 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h2>New Post</h2>
-    </div>
-    <div class="col-md-12">
-      <%= form_with model: @post, url: posts_path, local: true do |f| %>
-        <div class="col-md-6 image">
-          <div class="field">
-            <%= f.file_field :image_id, class: "img_field", style: "display:none" %>
-            <%= image_tag @post.image_id.url, onClick: "$('.img_field').click()",class: "img-thumbnail img_prev", size: "400" %>
-          </div>
+  <%= form_with model: @post, url: posts_path, local: true do |f| %>
+    <div class="row">
+      <div class="col-md-12 mb-4">
+        <h2>New Post</h2>
+      </div>
+      <div class="col-md-6 image">
+        <div class="field">
+          <%= f.file_field :image_id, class: "img_field", style: "display:none" %>
         </div>
-        <div class="col-md-6">
-          <table>
-            <tr>
-              <td><%= f.label :title, "Title" %></td>
-              <td><%= f.text_field :title %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :country, "Country" %></td>
-              <td><%= f.text_field :country %></td>
-            </tr>
-            <tr>
-              <td><%= f.label :text, "Text" %></td>
-              <td><%= f.text_area :text %></td>
-            </tr>
-          </table>
-          <div class="actions">
-            <%= f.submit "投稿する", class: "btn btn-success btn-md" %>
-          </div>
+        <%= image_tag @post.image_id.url, onClick: "$('.img_field').click()",class: "img-thumbnail img_prev", size: "450" %>
+      </div>
+      <div class="col-md-6 mt-5 pt-3">
+        <table>
+          <tr>
+            <td><p class="table-head"><%= f.label :title, "Title" %></p></td>
+            <td class="col-md-1"></td>
+            <td><p><%= f.text_field :title, size: "30" %></p></td>
+          </tr>
+          <tr>
+            <td><p class="table-head"><%= f.label :country, "Country" %></p></td>
+            <td></td>
+            <td><p><%= f.text_field :country, size: "30" %></p></td>
+          </tr>
+          <tr>
+            <td><p class="table-head mb-5 pb-5"><%= f.label :text, "Text" %></p></td>
+            <td></td>
+            <td><p><%= f.text_area :text, size: "40x4" %></p></td>
+          </tr>
+        </table>
+        <div class="actions text-right">
+          <%= f.submit "投稿する", class: "btn btn-success btn-md" %>
         </div>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>

@@ -1,4 +1,4 @@
-<div class="col-md-12 mt-4" width="100%">
+<div class="col-md-12 mt-1" width="100%">
   <% posts.reverse.each do |post| %>
     <table class="post-list mr-3 mb-3">
       <tr>
@@ -11,7 +11,9 @@
       <tr>
         <td>&emsp;
           <%= post.title %>
-          <%= render partial: "layouts/favorite", locals: { post: post } %>
+          <span class="heart-button">
+            <%= render partial: "layouts/favorite", locals: { post: post } %>
+          </span>
         </td>
       </tr>
     </table>

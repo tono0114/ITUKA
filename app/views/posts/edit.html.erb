@@ -1,0 +1,33 @@
+<div class="container">
+  <%= form_with model: @post, url: post_path(@post.id), local: true do |f| %>
+    <div class="row">
+      <div class="col-md-6 mt-4">
+        <div class="field">
+          <%= f.file_field :image_id, class: "img_field", style: "display:none" %>
+        </div>
+        <%= image_tag @post.image_id.url, onClick: "$('.img_field').click()",class: "img-thumbnail img_prev", size: "350x450" %>
+      </div>
+      <div class="col-md-6 pt-3">
+        <div class="field">
+          <span class="table-head"><%= f.label :title, "◯Title" %></span>
+          </br>
+          <%= f.text_field :title, size: "40px" %>
+        </div>
+        <div class="field mt-3">
+          <span class="table-head"><%= f.label :email, "◯Country" %></span>
+          </br>
+          <%= f.text_field :country, size: "40px" %>
+        </div>
+        <div class="field mt-3">
+          <span class="table-head"><%= f.label :text, "◯Text" %></span>
+          </br>
+          <%= f.text_area :text, size: "55x4" %>
+        </div>
+        <div class="actions text-right mr-4 mt-4">
+          <%= f.submit "更新する", class: "btn btn-success btn-sm px-3" %>
+          <%= link_to "削除する", post_delete_confirm_path(@post.id), class: "btn btn-danger btn-sm px-3 ml-4" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

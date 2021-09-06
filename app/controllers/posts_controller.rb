@@ -24,6 +24,16 @@ class PostsController < ApplicationController
     @post_comment = PostComment.new
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+    redirect_to post_path(@post.id)
+  end
+
   def delete_confirm
     @post = Post.find(params[:id])
   end

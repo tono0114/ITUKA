@@ -1,7 +1,7 @@
-<div class="col-md-12 text-right">
-  <%= form_with url: search_users_path, local: true, method: :get do |form| %>
+<div class="col-md-12 mt-2 text-right">
+  <%= form_with url: search_users_path, local: true, method: :get do |f| %>
     <div class="field">
-      <%= form.text_field :keyword %><%= form.submit "検索" %>
+      <%= f.text_field :keyword %><%= f.submit "検索", class: "search-button" %>
     </div>
   <% end %>
 </div>

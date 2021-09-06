@@ -4,6 +4,9 @@
       <div class="col-md-12">
         <h5>検索結果 "<strong><%= @keyword %></strong>"</h5>
       </div>
-    <%= render "layouts/users", users: @users %>
+    <%= render "layouts/users_left", users: @users %>
+    <% if @users.count > 8 %>
+      <%= render "layouts/users_right", users: @users %>
+    <% end %>
   </div>
 </div>

@@ -1,9 +1,12 @@
 <div class="container">
   <div class="row">
     <%= render "layouts/user_search_form" %>
-      <div class="col-md-12">
+      <div class="col-md-12 mb-3">
         <h2>Users</h2>
       </div>
-    <%= render "layouts/users", users: @users %>
+    <%= render "layouts/users_left", users: @users %>
+    <% if @users.count > 8 %>
+      <%= render "layouts/users_right", users: @users %>
+    <% end %>
   </div>
 </div>

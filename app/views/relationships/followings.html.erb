@@ -1,8 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 mb-4">
       <h2>Follows</h2>
     </div>
-    <%= render "layouts/users", users: @users %>
+    <%= render "layouts/users_left", users: @users %>
+    <% if @users.count > 8 %>
+      <%= render "layouts/users_right", users: @users %>
+    <% end %>
   </div>
 </div>

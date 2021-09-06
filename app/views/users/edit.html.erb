@@ -1,32 +1,33 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <%= form_with model: @user, url: user_path(@user.id), local: true do |f| %>
-        <div class="col-md-6">
-          <div class="field">
-            <%= f.file_field :image_id, class: "img_field", style: "display:none" %>
-          </div>
-          <%= image_tag @user.image_id.url, onClick: "$('.img_field').click()",class: "img-thumbnail img_prev", size: "400" %>
+  <%= form_with model: @user, url: user_path(@user.id), local: true do |f| %>
+    <div class="row">
+      <div class="col-md-6 mt-4">
+        <div class="field">
+          <%= f.file_field :image_id, class: "img_field", style: "display:none" %>
         </div>
-        <div class="col-md-6">
-          <div class="field">
-            <%= f.label :name, "ニックネーム" %></br>
-            <%= f.text_field :name, size: "40px" %>
-          </div>
-          <div class="field">
-            <%= f.label :email, "メールアドレス" %></br>
-            <%= f.email_field :email, size: "40px" %>
-          </div>
-          <div class="field">
-            <%= f.label :introduction, "自己紹介文" %></br>
-            <%= f.text_area :introduction, size: "40px" %>
-          </div>
-          <div class="actions">
-            <%= f.submit "更新する", class: "btn btn-outline-dark btn-sm" %>
-          </div>
-          <%= link_to "退会する", user_unsubscribe_path, class: "btn btn-outline-dark btn-sm ml-4" %>
+        <%= image_tag @user.image_id.url, onClick: "$('.img_field').click()",class: "img-thumbnail img_prev", size: "350x450" %>
+      </div>
+      <div class="col-md-6 pt-3">
+        <div class="field">
+          <span class="table-head"><%= f.label :name, "◯ニックネーム" %></span>
+          </br>
+          <%= f.text_field :name, size: "40px" %>
         </div>
-      <% end %>
+        <div class="field mt-3">
+          <span class="table-head"><%= f.label :email, "◯メールアドレス" %></span>
+          </br>
+          <%= f.email_field :email, size: "56px" %>
+        </div>
+        <div class="field mt-3">
+          <span class="table-head"><%= f.label :introduction, "◯自己紹介文" %></span>
+          </br>
+          <%= f.text_area :introduction, size: "55x4" %>
+        </div>
+        <div class="actions text-right mr-4 mt-4">
+          <%= f.submit "更新する", class: "btn btn-success btn-sm px-3" %>
+          <%= link_to "退会する", user_unsubscribe_path, class: "btn btn-danger btn-sm px-3 ml-4" %>
+        </div>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>

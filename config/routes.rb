@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get "/" => "homes#top"
+  get "/" => "homes#top", as: "root"
 
   devise_for :users
   resources :users, except: [:create, :new] do
@@ -21,14 +21,12 @@ Rails.application.routes.draw do
   get "followings/:id", :to => "relationships#followings", as: "followings"
   get "followers/:id", :to => "relationships#followers", as: "followers"
 
-  resources :posts, except:[:edit] do
+  resources :posts do
     resource :favorites, only:[:create, :destroy]
+    resources :post_comments, only:[:create, :destroy]
+    get "delete_confirm/:id" => "posts#delete_confirm", as: "delete_confirm"
     collection do
       get "search"
     end
   end
-  get "delete_confirm/:id" => "posts#delete_confirm", as: "delete_confirm"
-
-  resources :post_comments, only:[:create, :destroy]
-
 end
