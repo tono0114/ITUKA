@@ -17,12 +17,92 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
+ /*| multiple |-----------------------------*/
+
  body {
-  background-color: #eeeeee	;
+  background-image: url(back-image1.jpg);
   font-family: courier;
   overflow: scroll;
   height: 100vh;
  }
+
+ .field {
+  font-family: Fira Sans;
+ }
+
+ .img-prev:hover,.post-list:hover,.user-posts:hover,.search-button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  transform: scale(1.01, 1.01);
+ }
+
+ .search-button {
+  color: white;
+  background-color: #666666;
+ }
+
+ .heart-button {
+  position: absolute;
+  right: 10px;
+ }
+
+ .red-heart {
+  color: red;
+ }
+
+ .grey-heart {
+  color: #bbbbbb;
+ }
+
+ .link {
+  text-decoration: none;
+  color: black;
+ }
+
+ .error-message {
+  font-size: 25px;
+ }
+
+ .table-head {
+  font-size: 20px;
+ }
+
+ .next-page {
+  margin-top: 30px;
+  display: flex;
+  justify-content: right;
+ }
+
+ /*-----------------------------| multiple |*/
+
+
+
+ /*| header |-------------------------------*/
+
+ header {
+  height: 8%;
+ }
+
+ .navbar {
+  z-index: 2;
+  background-color: #cccccc;
+ }
+
+ .navbar-brand {
+  font-family: impact;
+  font-size: 40px;
+ }
+
+ .flash {
+  font-size: 20px;
+  color: #444444;
+ }
+
+ /*-------------------------------| header |*/
+
+
+
+ /*| homes_top |----------------------------*/
 
  .main-visual {
   position: relative;
@@ -46,153 +126,89 @@
   color: #666666;
   padding-top: 30px;
   position: absolute;
-  right: 150px;
+  right: 130px;
  }
 
  .signup-button {
   position: absolute;
   top: 180px;
-  right: 240px;
+  right: 220px;
  }
 
  .arrow {
   position: absolute;
-  right: 150px;
+  right: 130px;
   top: 120px;
  }
 
- .box1 {
+ #box {
+  width: 750px;
+  height: 530px;
+  box-shadow: 20px 20px 0 #666666;
   position: absolute;
   top: 70px;
-  left: 60px;
+  left: 80px;
  }
 
- .space2 {
-  width: 100%;
-  height: 300px;
-  position: relative;
+ .image1 {
+  background-image: url(sample_pic1.jpg);
  }
+
+ .image2 {
+  background-image: url(sample_pic2.jpg);
+ }
+
+ .image3 {
+  background-image: url(sample_pic3.jpg);
+ }
+
+ /*----------------------------| homes_top |*/
+
+
+
+ /*| homes_about |--------------------------*/
 
  .about {
-  width: 100%;
-  height: 330px;
   font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
  }
 
  .about-title {
-  margin-left: 230px;
-  color: black;
+  margin-bottom: 50px;
   font-family: impact;
   font-size: 70px;
  }
 
  .about-text {
-  margin-left: 110px;
-  font-size: 40px;
+  font-size: 30px;
  }
 
  .about-message {
-  margin-left: 20px;
   font-size: 20px;
+  line-height: 100px;
  }
 
- .box2 {
+ .image4 {
   position: absolute;
-  top: 790px;
-  right: 60px;
+  left: 0;
+  bottom: 0;
  }
 
- .space3 {
-  width: 100%;
-  height: 300px;
-  position: relative;
+ .image5 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
  }
 
- .contact {
-  width: 100%;
-  height: 250px;
-  margin-top: 100px;
-  background-color: #bbbbbb;
-  font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
- }
-
- .contact-title {
-  font-family: impact;
-  font-size: 70px;
-  text-align: center;
- }
+ /*--------------------------| homes_about |*/
 
 
- // a {
- //  padding-left: 10px;
- //  padding-right: 10px;
- //  font-size: 50px;
- //  text-align: center;
- //  color: black;
- // }
 
- // .box3 {
- //  position: absolute;
- //  top: 1380px;
- //  left: 60px;
- // }
-
- header {
-  height: 8%;
- }
-
- .navbar {
-  z-index: 2;
-  background-color: #bbbbbb;
- }
-
- .field {
-  font-family: Fira Sans;
-  word-break: normal;
- }
+ /*| posts_index |--------------------------*/
 
  .new-post:hover {
   cursor: pointer;
   opacity: 0.7;
   transform: scale(1.15, 1.15);
- }
-
- .img_prev:hover,.post-list:hover,.user_posts:hover,.search-button:hover {
-  cursor: pointer;
-  opacity: 0.7;
-  transform: scale(1.01, 1.01);
- }
-
- .navbar-brand {
-  font-family: impact;
-  font-size: 40px;
- }
-
- .search-button {
-  color: white;
-  background-color: #666666;
- }
-
- .heart-button {
-  position: absolute;
-  right: 10px;
- }
-
- .add-button {
-  font-size: 10%;
- }
-
- .red-heart {
-  color: red;
- }
-
- .grey-heart {
-  color: #bbbbbb;
- }
-
- .link {
-  text-decoration: none;
-  color: black;
  }
 
  .post-list {
@@ -202,38 +218,60 @@
   background-color: white;
  }
 
- .table-head {
-  font-size: 20px;
- }
+ /*--------------------------| posts_index |*/
+
+
+
+ /*| posts_show |---------------------------*/
 
  .table-data {
   font-size: 18px;
  }
 
+ .comment-count {
+  font-size: 45px;
+ }
+
+ .comment-form {
+  word-break: normal;
+ }
+
+ .name__date {
+  font-size: 13px;
+ }
+
+ /*---------------------------| posts_show |*/
+
+
+
+ /*| users_index |--------------------------*/
+
  .user-image {
   border: solid 1px white;
  }
 
- .user_posts {
+ /*---------------------------| users_index |*/
+
+
+
+ /*| users_show |----------------------------*/
+
+ .profile {
+  border-bottom: solid 1px grey;
+ }
+
+ .user-posts {
   display: block;
   float: left;
  }
 
- .comment_count {
-  font-size: 45px;
- }
+ /*----------------------------| users_show |*/
 
- .name_date {
-  font-size: 13px;
- }
 
- .next-page {
-  margin-top: 30px;
-  display: flex;
-  justify-content: right;
- }
 
- .confirm-text {
+ /*| users_unsubscribe |---------------------*/
+
+  .confirm-text {
   padding: 10px;
   width: 500px;
   color: white;
@@ -241,6 +279,4 @@
   background-color: #888888;
  }
 
- .profile {
-  border-bottom: solid 1px grey;
- }
+ /*---------------------| users_unsubscribe |*/

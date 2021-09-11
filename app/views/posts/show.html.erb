@@ -39,17 +39,18 @@
       <% if @post_comments.count == 0 %>
         <h2>No Comment</h2>
       <% elsif @post_comments.count == 1 %>
-        <h2><span class="comment_count">1 </span>Comment</h2>
+        <h2><span class="comment-count">1 </span>Comment</h2>
       <% else %>
         <h2>
-          <span class="comment_count">
+          <span class="comment-count">
             <%= @post_comments.count %>
           </span>Comments
         </h2>
       <% end %>
+      <p class="flash"><%= flash[:no_comment] %></p>
       <%= form_with model: @post_comment, url: post_post_comments_path(@post.id), local: true do |f| %>
         <div class="field">
-          <%= f.text_area :comment, size: "53px", class: "text-form", size: "58x4" %>
+          <%= f.text_area :comment, class: "comment-form", size: "58x4" %>
         </div>
         <div class="actions text-right">
           <%= f.submit "コメントする", class: "btn btn-success btn-sm" %>
@@ -62,7 +63,7 @@
               <%= link_to user_path(post_comment.user.id) do %>
                 <%= image_tag post_comment.user.image_id.url, size: "40" %></br>
               <% end %>
-              <span class="name_date">
+              <span class="name__date">
                 <%= post_comment.user.name %>&emsp;
                 <%= time_ago_in_words(post_comment.created_at) %>
               </span></br>

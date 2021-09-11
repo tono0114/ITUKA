@@ -6,6 +6,7 @@
       </div>
     <%= render "layouts/users_left", users: @users %>
     <% if @users.count > 8 %>
+      <%= render "layouts/center_line" %>
       <%= render "layouts/users_right", users: @users %>
     <% end %>
   </div>

@@ -1,19 +1,24 @@
 Rails.application.routes.draw do
 
-  get "/" => "homes#top", as: "root"
+  root "homes#top"
+  get "about" => "homes#about"
 
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: "users/registrations"
+  }
+
   resources :users, except: [:create, :new] do
+    get "unsubscribe/:id" => "users#unsubscribe", as: "unsubscribe"
     collection do
       get "search"
     end
   end
-  get "unsubscribe/:id" => "users#unsubscribe", as: "user_unsubscribe"
 
   devise_scope :user do
     get "signup" => "users/registrations#new"
     get "login" => "users/sessions#new"
     delete "logout" => "users/sessions#destroy"
+    post "guest_sign_in" => "users/sessions#guest_sign_in"
   end
 
   post 'follow/:id' => 'relationships#follow', as: 'follow'

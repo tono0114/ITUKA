@@ -1,32 +1,30 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_normal_user, only: [:update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :unsubscribe, :destroy,]
 
   def index
     @users = User.all.page(params[:page]).per(16)
   end
 
   def show
-    @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page]).per(9)
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to user_path(@user.id)
+    redirect_to user_path(@user.id), notice: "ユーザー情報を更新しました。"
   end
 
   def unsubscribe
-    @user = User.find(params[:id])
   end
 
   def destroy
-    @user = User.find(params[:id])
     @user.destroy
-    redirect_to top_path
+    redirect_to root_path, notice: "退会処理が完了しました。"
   end
 
   def search
@@ -39,6 +37,16 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def ensure_normal_user
+    if current_user.email == "guest@ituka.com"
+      redirect_to posts_path, notice: "ゲストユーザーの更新・削除はできません。"
+    end
+  end
 
   def user_params
     params.require(:user).permit(:image_id, :name, :email, :introduction)

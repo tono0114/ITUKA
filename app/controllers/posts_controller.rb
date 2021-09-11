@@ -1,11 +1,16 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+  before_action :set_post, only: [:show, :edit, :update, :delete_confirm, :destroy]
 
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to post_path(@post.id)
+    if @post.save
+      redirect_to post_path(@post.id), notice: "投稿しました。"
+    else
+      redirect_to new_post_path
+      flash[:no_post] = "※Titleを入力してください。"
+    end
   end
 
   def new
@@ -17,7 +22,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
     @user = @post.user
     @favorite = Favorite.new
     @post_comments = @post.post_comments
@@ -25,23 +29,19 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
     @post.update(post_params)
-    redirect_to post_path(@post.id)
+    redirect_to post_path(@post.id), notice: "投稿内容を更新しました。"
   end
 
   def delete_confirm
-    @post = Post.find(params[:id])
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
-    redirect_to user_path(@post.user.id)
+    redirect_to user_path(@post.user.id), notice: "投稿を削除しました。"
   end
 
   def search
@@ -54,6 +54,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
   def post_params
     params.require(:post).permit(:title, :image_id, :country, :text)

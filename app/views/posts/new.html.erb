@@ -6,11 +6,12 @@
       </div>
       <div class="col-md-6 image">
         <div class="field">
-          <%= f.file_field :image_id, class: "img_field", style: "display:none" %>
+          <%= f.file_field :image_id, class: "img-field", style: "display:none" %>
         </div>
-        <%= image_tag @post.image_id.url, onClick: "$('.img_field').click()",class: "img-thumbnail img_prev", size: "450" %>
+        <%= image_tag @post.image_id.url, onClick: "$('.img-field').click()",class: "img-thumbnail img-prev", size: "450" %>
       </div>
       <div class="col-md-6 mt-5 pt-3">
+        <p class="flash"><%= flash[:no_post] %></p>
         <table>
           <tr>
             <td><p class="table-head"><%= f.label :title, "Title" %></p></td>
