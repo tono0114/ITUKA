@@ -1,22 +1,20 @@
 <div class="col-md-12 mt-1" width="100%">
   <% posts.reverse.each do |post| %>
-    <table class="post-list mr-3 mb-3">
-      <tr>
-        <td>
-          <%= link_to post_path(post.id) do %>
-            <%= image_tag post.image_id.url, size: "250x200" %>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>&emsp;
-          <%= post.title %>
-          <span class="heart-button">
-            <%= render partial: "layouts/favorite", locals: { post: post } %>
-          </span>
-        </td>
-      </tr>
-    </table>
+    <%= link_to post_path(post.id), class: "link" do %>
+      <table class="post-list mr-3 mb-3">
+        <tr>
+          <td><%= image_tag post.image_id.url, size: "250x200" %></td>
+        </tr>
+        <tr>
+          <td>&emsp;
+            <%= post.title %>
+            <span class="heart-button">
+              <%= render partial: "layouts/favorite", locals: { post: post } %>
+            </span>
+          </td>
+        </tr>
+      </table>
+    <% end %>
   <% end %>
   <div class="col-md-12 next-page">
     <%= paginate posts %>

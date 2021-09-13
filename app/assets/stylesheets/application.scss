@@ -41,11 +41,6 @@
   background-color: #666666;
  }
 
- .heart-button {
-  position: absolute;
-  right: 10px;
- }
-
  .red-heart {
   color: red;
  }
@@ -216,6 +211,11 @@
   position: relative;
   border: thin solid black;
   background-color: white;
+ }
+
+ .heart-button {
+  position: absolute;
+  right: 10px;
  }
 
  /*--------------------------| posts_index |*/

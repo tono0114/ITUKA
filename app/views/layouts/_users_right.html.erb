@@ -1,6 +1,6 @@
 <div class="col-md-5">
   <table>
-    <% users.slice(8..-1).shuffle.each do |user| %>
+    <% users.slice(8..-1).each do |user| %>
       <tr>
         <td class="col-md-1">
           <%= link_to user_path(user.id) do %>

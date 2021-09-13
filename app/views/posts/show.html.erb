@@ -13,7 +13,13 @@
         <tr>
           <th><span class="table-head">User</span></th>
           <td class="col-md-1 col-sm-1"></td>
-          <td><span class="table-data"><%= @user.name %></span></td>
+          <td>
+            <%= link_to user_path(@user) do %>
+            <span class="table-data link">
+            <%= @user.name %>
+            </span>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <th><span class="table-head">Title</span></th>
