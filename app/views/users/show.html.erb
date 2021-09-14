@@ -16,7 +16,7 @@
         <tr class="profile">
           <td class="col-md-5 col-sm-5">フォロー</td>
           <td class="follow-border">
-            <%= link_to followings_path, class: "link" do %>
+            <%= link_to followings_path, class: "link following" do %>
               <%= @user.following_user.count %>
             <% end %>
             人
@@ -25,7 +25,7 @@
         <tr class="profile">
           <td class="col-md-5 col-sm-5">フォロワー</td>
           <td class="follow-border">
-            <%= link_to followers_path, class: "link" do %>
+            <%= link_to followers_path, class: "link follower" do %>
               <%= @user.follower_user.count %>
             <% end %>
             人

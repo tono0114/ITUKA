@@ -1,6 +1,6 @@
 <div class="col-md-12 mt-1" width="100%">
   <% posts.reverse.each do |post| %>
-    <%= link_to post_path(post.id), class: "link" do %>
+    <%= link_to post_path(post.id), class: "link post-link" do %>
       <table class="post-list mr-3 mb-3">
         <tr>
           <td><%= image_tag post.image_id.url, size: "250x200" %></td>
