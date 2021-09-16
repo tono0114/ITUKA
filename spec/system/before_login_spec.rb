@@ -36,8 +36,8 @@ describe 'ユーザー登録前' do
     context '表示内容の確認' do
       subject { page }
 
-      it 'タイトルが表示され、トップ画面へのリンクになっている' do
-        is_expected.to have_link 'ITUKA'
+      it 'タイトルロゴが表示される' do
+        is_expected.to have_selector '#header-logo'
       end
       it 'Aboutリンクが表示される' do
         is_expected.to have_link 'About'
@@ -53,6 +53,10 @@ describe 'ユーザー登録前' do
     context 'リンク内容の確認' do
       subject { current_path }
 
+      it 'タイトルロゴをクリックするとトップページに遷移する' do
+        find('#header-logo').click
+        is_expected.to eq '/'
+      end
       it 'Aboutリンクを押すと、アバウト画面に遷移する' do
         click_link 'About'
         is_expected.to eq '/about'
@@ -150,8 +154,10 @@ describe 'ユーザ登録後' do
     context '表示内容の確認' do
       subject { page }
 
-      it 'タイトルが表示され、トップページへのリンクになっている' do
-        is_expected.to have_link 'ITUKA'
+      it 'タイトルロゴが表示され、トップページへのリンクになっている' do
+        is_expected.to have_selector '#header-logo'
+        find('#header-logo').click
+        expect(current_path).to eq '/'
       end
       it 'MyPageリンクが表示される' do
         is_expected.to have_link 'MyPage'
