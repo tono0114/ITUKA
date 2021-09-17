@@ -140,15 +140,15 @@
  }
 
  .image1 {
-  background-image: url(sample_pic1.jpg);
+  background-image: image-url("sample_pic1.jpg");
  }
 
  .image2 {
-  background-image: url(sample_pic2.jpg);
+  background-image: image-url("sample_pic2.jpg");
  }
 
  .image3 {
-  background-image: url(sample_pic3.jpg);
+  background-image: image-url("sample_pic3.jpg");
  }
 
  /*----------------------------| homes_top |*/
