@@ -8,7 +8,7 @@
         <div class="field">
           <%= f.file_field :image_id, class: "img-field", style: "display:none" %>
         </div>
-        <%= image_tag @post.image_id.url, onClick: "$('.img-field').click()",class: "img-thumbnail img-prev", size: "450" %>
+        <%= image_tag @post.image_id.url, onClick: "$('.img-field').click()", class: "img-thumbnail img-prev", size: "500x400" %>
       </div>
       <div class="col-md-6 mt-5 pt-3">
         <p class="flash"><%= flash[:no_post] %></p>
