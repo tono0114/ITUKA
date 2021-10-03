@@ -1,13 +1,13 @@
 <header class="mb-5">
   <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container">
-      <a class="navbar-brand" href="/" id="header-logo"><%= image_tag "title-logo.png", size: "70x70" %></a>
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/" id="header-logo"><%= image_tag "title-logo.png", size: "70x70", class: "ml-5" %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <div class="flash ml-5 pl-5"><%= flash[:notice] %></div>
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto mr-5">
           <% if user_signed_in? %>
             <li class="nav-item">
               <%= link_to "MyPage", user_path(current_user.id), class: "nav-link text-dark" %>
