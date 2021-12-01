@@ -45,6 +45,12 @@
  .grey-heart {
   color: #bbbbbb;
  }
+ 
+ .img-thumbnail {
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
+ }
 
  .link {
   text-decoration: none;

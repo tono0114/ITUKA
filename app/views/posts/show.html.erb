@@ -4,8 +4,8 @@
       <h2>Post detail</h2>
     </div>
     <div class="col-md-6">
-      <%= image_tag @post.image_id.url, size: "500x400" %></br>
-      <i class="fas fa-comment"></i>&thinsp;<%= @post_comments.count %></br>
+      <%= image_tag @post.image_id.url, class: "img-thumbnail" %><br />
+      <i class="fas fa-comment"></i>&thinsp;<%= @post_comments.count %><br />
       <%= render "layouts/favorite", post: @post %>
     </div>
     <div class="col-md-6">
@@ -67,15 +67,15 @@
           <tr>
             <td class="col-md-9">
               <%= link_to user_path(post_comment.user.id) do %>
-                <%= image_tag post_comment.user.image_id.url, size: "40" %></br>
+                <%= image_tag post_comment.user.image_id.url, size: "40" %><br />
               <% end %>
               <span class="name__date">
                 <%= post_comment.user.name %>&emsp;
                 <%= time_ago_in_words(post_comment.created_at) %>
-              </span></br>
+              </span><br />
               <%= post_comment.comment %>
-              </br>
-              </br>
+              <br />
+              <br />
             </td>
             <td class="col-md-3">
               <div class="text-right">
