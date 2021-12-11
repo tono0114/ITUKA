@@ -139,7 +139,7 @@
   position: relative;
  }
 
- .text1 {
+ .txt1 {
   font-size: 25px;
   color: #888888;
   position: absolute;
@@ -154,7 +154,7 @@
   z-index: 1;
  }
 
- .left-text {
+ .txt2 {
   font-size: 20px;
   position: absolute;
   top: 120px;
@@ -169,7 +169,7 @@
   z-index: 1;
  }
 
- .right-text {
+ .txt3 {
   font-size: 20px;
   position: absolute;
   top: 130px;
@@ -183,7 +183,7 @@
   right: 400px;
  }
 
- .text2 {
+ .txt4 {
   color: #444444;
   font-size: 30px;
   position: absolute;
@@ -191,14 +191,35 @@
   left: 130px;
  }
 
- .text3 {
+ .txt5 {
   color: #444444;
   font-size: 20px;
   position: absolute;
   top: 400px;
   left: 90px;
  }
-
+ 
+ .txt6 {
+  color: #444444;
+  font-size: 20px;
+  position: absolute;
+  top: 480px;
+  left: 90px;
+ }
+ 
+ .fadein {
+  opacity: 0;
+  animation: fadein 1s ease forwards;
+ }
+ @keyframes fadein {
+  100% { opacity: 1; }
+ }
+ 
+ .content1 {animation-delay: 2s;}
+ .content2 {animation-delay: 4s;}
+ .txt4 {animation-delay: 6s;}
+ .txt5 {animation-delay: 8s;}
+ .txt6 {animation-delay: 10s;}
 
  /*--------------------------| homes_about |*/
 
