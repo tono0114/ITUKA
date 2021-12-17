@@ -13,7 +13,7 @@
 ・気になる投稿にはコメントをしてユーザとやりとり  
 
 ## URL
-http://ituka-ikitai.com  
+https://ituka-ikitai.com  
 [ゲストログイン]ボタンからゲストユーザとしてログインできます。
 
 ## 制作の背景  
